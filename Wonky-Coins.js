@@ -12,7 +12,6 @@
 var wonkyCoins = function(n){
 
   var numOfCoins = 0;
-  var changeLayers = [];
   var divide = function(x, y){
     return Math.floor(x/y);
   }
@@ -24,7 +23,16 @@ var wonkyCoins = function(n){
       checkValue(divide(coin, 3));
       checkValue(divide(coin, 4));
     }
-  return numOfCoins;
   }
   return checkValue(n);
+}
+
+//Sourced from Stack Overflow (http://stackoverflow.com/questions/29023436/recursion-using-javascript)
+function wonkyCoins(num){
+  if (num === 0){
+    return 1;
+  }
+  else {
+    return (wonkyCoins(num/4) + wonkyCoins(num/3) + wonkyCoins(num/2));
+  }
 }
