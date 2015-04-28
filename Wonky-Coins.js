@@ -17,24 +17,14 @@ var wonkyCoins = function(n){
     return Math.floor(x/y);
   }
   var checkValue = function(coin){
-    var change = [divide(coin, 2), divide(coin, 3), divide(coin, 4)];
-    changeLayers.push(change)
-      if(change[0]){
-        checkValue(change[0])
-      } else {
-        numOfCoins++
-      }
-      if(change[1]){
-        checkValue(change[1])
-      } else {
-        numOfCoins++
-      }
-      if(change[2]){
-        checkValue(change[2])
-      } else {
-        numOfCoins++
-      }
-    } 
-  checkValue(n);
-  return changeLayers;
+    if(coin === 0){
+      numOfCoins++;
+    } else {
+      checkValue(divide(coin, 2));
+      checkValue(divide(coin, 3));
+      checkValue(divide(coin, 4));
+    }
+  return numOfCoins;
+  }
+  return checkValue(n);
 }
