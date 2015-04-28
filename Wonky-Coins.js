@@ -9,12 +9,12 @@
 
 // Difficulty: 3/5
 
-var wonkyCoins = function(n){
+var divide = function(x, y){
+  return Math.floor(x/y);
+}
 
+var wonkyCoins = function(n){
   var numOfCoins = 0;
-  var divide = function(x, y){
-    return Math.floor(x/y);
-  }
   var checkValue = function(coin){
     if(coin === 0){
       numOfCoins++;
@@ -28,11 +28,12 @@ var wonkyCoins = function(n){
 }
 
 //Sourced from Stack Overflow (http://stackoverflow.com/questions/29023436/recursion-using-javascript)
-function wonkyCoins(num){
+//Edited to avoid infinite loop
+var wonkyCoins = function(num){
   if (num === 0){
     return 1;
   }
   else {
-    return (wonkyCoins(num/4) + wonkyCoins(num/3) + wonkyCoins(num/2));
+    return (wonkyCoins(divide(num, 4)) + wonkyCoins(divide(num, 3)) + wonkyCoins(divide(num, 2)))
   }
 }
